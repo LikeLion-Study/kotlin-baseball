@@ -13,3 +13,19 @@
   - [ ] `3개의 숫자를 모두 맞히셨습니다!`
   - [ ] `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.` `\n입력`
 - [ ] 랜덤 숫자 생성부터 끝까지 반복
+
+
+## 아키텍처 MVP
+### Model
+- RandomNumberGenerator
+- GameJudge
+### View
+- InputViewImpl
+- OutputViewImpl
+### contract
+- BaseballContract
+  - InputView
+  - OutputView
+  - Presenter
+### Presenter
+- BaseballPresenter
