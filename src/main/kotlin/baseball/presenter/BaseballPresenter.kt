@@ -4,7 +4,8 @@ import baseball.BaseballContract
 import baseball.model.GameJudge
 import baseball.model.GuessNumber
 import baseball.model.RandomNumberGenerator
-import baseball.utils.Const
+import baseball.utils.constants.Error
+import baseball.utils.constants.General
 import baseball.utils.retryInput
 
 class BaseballPresenter(
@@ -36,7 +37,7 @@ class BaseballPresenter(
                     val guess = GuessNumber.parse(inputNumber)
                     val (strike, ball) = judge.compare(guess.number)
                     outputView.printGuessedResultMessage(strike, ball)
-                } while (strike != Const.MAX_NUMBER_COUNT)
+                } while (strike != General.MAX_NUMBER_COUNT)
             },
             onError = {
                 outputView.printErrorMessage(it)
@@ -49,9 +50,9 @@ class BaseballPresenter(
             runCatching {
                 val selected = inputView.readRestartingInput()
                 return when (selected) {
-                    "1" -> true
-                    "2" -> false
-                    else -> throw IllegalArgumentException ("")
+                    General.RESTART -> true
+                    General.TERMINATION -> false
+                    else -> throw IllegalArgumentException (Error.INCORRECT_INPUT)
                 }
             }.onFailure {
                 outputView.printErrorMessage(it.message)

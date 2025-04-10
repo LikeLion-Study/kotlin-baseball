@@ -1,6 +1,6 @@
 package baseball.model
 
-import baseball.utils.Const
+import baseball.utils.constants.General
 import kotlin.random.Random
 
 object RandomNumberGenerator {
@@ -10,7 +10,7 @@ object RandomNumberGenerator {
     fun generate(): List<Int> {
         val randomNumbers = mutableListOf<Int>()
 
-        while (randomNumbers.size < Const.MAX_NUMBER_COUNT) {
+        while (randomNumbers.size < General.MAX_NUMBER_COUNT) {
             val randomNumber = Random.nextInt(MIN_NUMBER, MAX_NUMBER)
             if (randomNumber !in randomNumbers) randomNumbers.add(randomNumber)
         }
