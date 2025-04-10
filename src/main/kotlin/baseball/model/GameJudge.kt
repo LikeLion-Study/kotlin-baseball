@@ -15,6 +15,6 @@ class GameJudge(private val correctNumber: List<Int>) {
     private fun containsBall(guessNumber: List<Int>): Int {
         return correctNumber
             .indices
-            .count { correctNumber[it] != guessNumber[it] && correctNumber.containsAll(guessNumber) }
+            .count { correctNumber[it] != guessNumber[it] && correctNumber[it] in guessNumber }
     }
 }
