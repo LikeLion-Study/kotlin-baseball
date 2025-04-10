@@ -1,13 +1,17 @@
 package baseball.model
 
+import baseball.utils.Const
 import kotlin.random.Random
 
 object RandomNumberGenerator {
+    private const val MIN_NUMBER = 1
+    private const val MAX_NUMBER = 10
+
     fun generate(): List<Int> {
         val randomNumbers = mutableListOf<Int>()
 
-        while (randomNumbers.size < 3) {
-            val randomNumber = Random.nextInt(1, 10)
+        while (randomNumbers.size < Const.MAX_NUMBER_COUNT) {
+            val randomNumber = Random.nextInt(MIN_NUMBER, MAX_NUMBER)
             if (randomNumber !in randomNumbers) randomNumbers.add(randomNumber)
         }
         return randomNumbers
