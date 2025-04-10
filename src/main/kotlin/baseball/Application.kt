@@ -8,5 +8,5 @@ fun main() {
     val inputView: BaseballContract.InputView = InputViewImpl()
     val outputView: BaseballContract.OutputView = OutputViewImpl()
     val baseball = BaseballPresenter(inputView, outputView)
-    baseball.play()
+    baseball.execute()
 }
