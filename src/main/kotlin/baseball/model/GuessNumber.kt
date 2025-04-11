@@ -9,6 +9,7 @@ class GuessNumber private constructor(val number: List<Int>) {
 
         fun parse(input: String): GuessNumber {
             require(input.toIntOrNull() != null) { Error.NOT_NUMBER }
+            require(input.length == General.MAX_NUMBER_COUNT) { Error.DIFFERENT_DIGITS }
             require(input.toSet().size == General.MAX_NUMBER_COUNT) { Error.DUPLICATE_NUMBER }
             require(!input.contains(OUT_OF_RANGE_NUMBER)) { Error.OUT_OF_RANGE_NUMBER }
 
