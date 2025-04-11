@@ -18,13 +18,13 @@ class BaseballPresenter(
     }
 
     private fun playBaseball() {
-        val judge = initialNumberSetting()
+        val judge = initialSetting()
         proceedInning(judge)
         outputView.printGameWinningMessage()
         if (selectRestart()) playBaseball()
     }
 
-    private fun initialNumberSetting(): GameJudge {
+    private fun initialSetting(): GameJudge {
         val randomNumber = RandomNumberGenerator.generate()
         return GameJudge(randomNumber)
     }
@@ -46,17 +46,18 @@ class BaseballPresenter(
     }
 
     private fun selectRestart(): Boolean {
-        while (true) {
-            runCatching {
+        return retryInput(
+            runBlock = {
                 val selected = inputView.readRestartingInput()
-                return when (selected) {
+                when (selected) {
                     General.RESTART -> true
                     General.TERMINATION -> false
-                    else -> throw IllegalArgumentException (Error.INCORRECT_INPUT)
+                    else -> throw IllegalArgumentException(Error.INCORRECT_INPUT)
                 }
-            }.onFailure {
-                outputView.printErrorMessage(it.message)
+            },
+            onError = {
+                outputView.printErrorMessage(it)
             }
-        }
+        )
     }
 }
