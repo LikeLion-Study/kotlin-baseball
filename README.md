@@ -17,8 +17,9 @@
 
 ## 아키텍처 MVP
 ### Model
-- RandomNumberGenerator
 - GameJudge
+- GuessNumber
+- RandomNumberGenerator
 ### View
 - InputViewImpl
 - OutputViewImpl
